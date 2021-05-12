@@ -1,0 +1,39 @@
+{
+	"name": "@miroiu/react-popover",
+	"version": "1.0.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"description": "React popover component using emotionjs",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"deploy": "tsc && npm publish",
+		"build": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/miroiu/react-popover.git"
+	},
+	"keywords": [
+		"react",
+		"popover"
+	],
+	"author": "Emanuel Miroiu",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/miroiu/react-popover/issues"
+	},
+	"homepage": "https://github.com/miroiu/react-popover#readme",
+	"peerDependencies": {
+		"@emotion/react": "^11.x",
+		"@emotion/styled": "^11.x",
+		"react": "^17.x",
+		"react-dom": "^17.x"
+	},
+	"devDependencies": {
+		"@types/react": "^17.x",
+		"@types/react-dom": "^17.x",
+		"typescript": "^4.2.3"
+	}
+}
