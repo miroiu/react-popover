@@ -46,6 +46,7 @@ const Dropdown: React.FC<{
 	values: string[];
 	onChange: (value: string) => void;
 }> = ({ values, onChange }) => {
+	const [selected, setSelected] = useState(values[0]);
 	return (
 		<Popover>
 			<PopoverTrigger>
@@ -56,7 +57,10 @@ const Dropdown: React.FC<{
 					{values.map((value, index) => (
 						<FancyButton
 							key={index}
-							onClick={() => onChange(value)}
+							onClick={() => {
+								onChange(value);
+								setSelected(value);
+							}}
 						>
 							{value}
 						</FancyButton>

@@ -35,41 +35,6 @@ const HugeText = styled.p`
 	font-family: 'Source Code Pro', monospace;
 `;
 
-const Dropdown: React.FC<{
-	values: string[];
-	onChange: (value: string) => void;
-}> = ({ values, onChange }) => {
-	return (
-		<Popover>
-			<PopoverTrigger>
-				<FancyButton>{values[0]}</FancyButton>
-			</PopoverTrigger>
-			<PopoverContent>
-				<PopoverClose>
-					{values.map((value, index) => (
-						<FancyButton
-							key={index}
-							onClick={() => onChange(value)}
-						>
-							{value}
-						</FancyButton>
-					))}
-				</PopoverClose>
-				<FancyText>Won't close on click</FancyText>
-			</PopoverContent>
-		</Popover>
-	);
-};
-
-const possibleValues = [
-	'white',
-	'yellow',
-	'orange',
-	'orangered',
-	'green',
-	'yellowgreen',
-];
-
 const Bottom = styled.div`
 	position: absolute;
 	bottom: 10px;
@@ -116,6 +81,45 @@ const Button = styled.a`
 		color: white;
 	}
 `;
+
+const Dropdown: React.FC<{
+	values: string[];
+	onChange: (value: string) => void;
+}> = ({ values, onChange }) => {
+	const [selected, setSelected] = useState(values[0]);
+	return (
+		<Popover>
+			<PopoverTrigger>
+				<FancyButton>{selected}</FancyButton>
+			</PopoverTrigger>
+			<PopoverContent>
+				<PopoverClose>
+					{values.map((value, index) => (
+						<FancyButton
+							key={index}
+							onClick={() => {
+								onChange(value);
+								setSelected(value);
+							}}
+						>
+							{value}
+						</FancyButton>
+					))}
+				</PopoverClose>
+				<FancyText>Won't close on click</FancyText>
+			</PopoverContent>
+		</Popover>
+	);
+};
+
+const possibleValues = [
+	'white',
+	'yellow',
+	'orange',
+	'orangered',
+	'green',
+	'yellowgreen',
+];
 
 export const App: React.FC = () => {
 	const [selected, setSelected] = useState(possibleValues[0]);
